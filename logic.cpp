@@ -1,5 +1,4 @@
 #include "logic.h"
+#include <QMutex>
 
-logic::logic()
-{
-}
+logic* logic::m_Instance = 0;

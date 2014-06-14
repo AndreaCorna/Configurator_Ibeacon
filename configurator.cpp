@@ -8,6 +8,7 @@ Configurator::Configurator(QWidget *parent) :
     ui(new Ui::Configurator)
 {
     ui->setupUi(this);
+    logic_instance = logic::instance();
 }
 
 Configurator::~Configurator()

@@ -23,7 +23,7 @@ public slots:
 private:
     void loadBoxMessage(QString message,bool error);
     Ui::Configurator *ui;
-    logic logic_instance;
+    logic* logic_instance;
 };
 
 #endif // CONFIGURATOR_H
