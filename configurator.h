@@ -2,6 +2,7 @@
 #define CONFIGURATOR_H
 
 #include <QMainWindow>
+#include "logic.h"
 
 namespace Ui {
 class Configurator;
@@ -22,6 +23,7 @@ public slots:
 private:
     void loadBoxMessage(QString message,bool error);
     Ui::Configurator *ui;
+    logic logic_instance;
 };
 
 #endif // CONFIGURATOR_H

@@ -13,8 +13,10 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        configurator.cpp
+        configurator.cpp \
+    logic.cpp
 
-HEADERS  += configurator.h
+HEADERS  += configurator.h \
+    logic.h
 
 FORMS    += configurator.ui
