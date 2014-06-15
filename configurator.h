@@ -20,11 +20,15 @@ public slots:
     void generate();
     void reset();
     void loadBoxMessage();
+    void set_slider();
+    void set_number(int num);
 
 private:
     bool correct_data(QString UUID,QString major, QString minor);
     Ui::Configurator *ui;
     generator_logic* logic_instance;
+    int mls;
+    int number;
 };
 
 #endif // CONFIGURATOR_H

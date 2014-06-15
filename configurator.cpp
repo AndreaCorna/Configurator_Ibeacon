@@ -10,6 +10,18 @@ Configurator::Configurator(QWidget *parent) :
     ui->setupUi(this);
     logic_instance = new generator_logic();
     connect(logic_instance,SIGNAL(call_gui()),this,SLOT(loadBoxMessage()));
+    connect(this->ui->major_check,SIGNAL(clicked()),this,SLOT(set_slider()));
+    connect(this->ui->minor_check,SIGNAL(clicked()),this,SLOT(set_slider()));
+    connect(this->ui->unit_slider,SIGNAL(valueChanged(int)),this,SLOT(set_number(int)));
+    connect(this->ui->unit_slider,SIGNAL(valueChanged(int)),this,SLOT(set_number(int)));
+    connect(this->ui->ten_slider,SIGNAL(valueChanged(int)),this,SLOT(set_number(int)));
+    connect(this->ui->hundred_slider,SIGNAL(valueChanged(int)),this,SLOT(set_number(int)));
+
+    ui->unit_slider->setEnabled(false);
+    ui->ten_slider->setEnabled(false);
+    ui->hundred_slider->setEnabled(false);
+
+
 }
 
 Configurator::~Configurator()
@@ -20,6 +32,31 @@ Configurator::~Configurator()
 /*
  * Public slots
  */
+
+void Configurator::set_slider(){
+    qDebug()<<"set slider";
+    bool first_check = ui->major_check->isChecked();
+    bool second_check = ui->minor_check->isChecked();
+    if(first_check || second_check){
+        ui->unit_slider->setEnabled(true);
+        ui->ten_slider->setEnabled(true);
+        ui->hundred_slider->setEnabled(true);
+        if(first_check && second_check)
+            mls=2;
+        else
+            mls=1;
+    }else{
+        ui->unit_slider->setEnabled(false);
+        ui->ten_slider->setEnabled(false);
+        ui->hundred_slider->setEnabled(false);
+    }
+}
+
+void Configurator::set_number(int num){
+    number =(num*65536*mls)/100;
+    ui->number_label->setNum(number);
+}
+
 
 void Configurator::generate(){
     qDebug()<<"generate";
@@ -43,6 +80,15 @@ void Configurator::reset(){
     ui->lineMinor->clear();
     ui->lineUUID->clear();
     ui->horizontalSlider->setValue(50);
+    ui->major_check->setChecked(false);
+    ui->minor_check->setChecked(false);
+    ui->unit_slider->setValue(0);
+    ui->ten_slider->setValue(0);
+    ui->hundred_slider->setValue(0);
+    ui->unit_slider->setEnabled(false);
+    ui->ten_slider->setEnabled(false);
+    ui->hundred_slider->setEnabled(false);
+
 }
 
 bool Configurator::correct_data(QString UUID,QString major, QString minor){

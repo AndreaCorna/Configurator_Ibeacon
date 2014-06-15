@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>445</width>
-    <height>325</height>
+    <width>485</width>
+    <height>370</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -161,20 +161,71 @@
       </item>
       <item>
        <widget class="QLabel" name="number_label">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>75</width>
+          <height>0</height>
+         </size>
+        </property>
         <property name="text">
-         <string>TextLabel</string>
+         <string/>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QSlider" name="number_slider">
-        <property name="autoFillBackground">
-         <bool>false</bool>
-        </property>
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-       </widget>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <widget class="QLabel" name="label_7">
+          <property name="text">
+           <string>Units</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QSlider" name="unit_slider">
+          <property name="autoFillBackground">
+           <bool>false</bool>
+          </property>
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_8">
+          <property name="text">
+           <string>Tens</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QSlider" name="ten_slider">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_9">
+          <property name="text">
+           <string>Hundreds</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QSlider" name="hundred_slider">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </item>
      </layout>
     </item>
@@ -242,7 +293,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>445</width>
+     <width>485</width>
      <height>20</height>
     </rect>
    </property>
@@ -267,8 +318,8 @@
    <slot>generate()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>108</x>
-     <y>240</y>
+     <x>175</x>
+     <y>288</y>
     </hint>
     <hint type="destinationlabel">
      <x>151</x>
@@ -283,8 +334,8 @@
    <slot>reset()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>268</x>
-     <y>253</y>
+     <x>348</x>
+     <y>288</y>
     </hint>
     <hint type="destinationlabel">
      <x>282</x>
