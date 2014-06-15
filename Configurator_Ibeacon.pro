@@ -14,9 +14,9 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         configurator.cpp \
-    logic.cpp
+    generator_logic.cpp
 
 HEADERS  += configurator.h \
-    logic.h
+    generator_logic.h
 
 FORMS    += configurator.ui

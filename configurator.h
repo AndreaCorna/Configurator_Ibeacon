@@ -2,7 +2,7 @@
 #define CONFIGURATOR_H
 
 #include <QMainWindow>
-#include "logic.h"
+#include "generator_logic.h"
 
 namespace Ui {
 class Configurator;
@@ -19,11 +19,12 @@ public:
 public slots:
     void generate();
     void reset();
+    void loadBoxMessage();
 
 private:
-    void loadBoxMessage(QString message,bool error);
+    bool correct_data(QString UUID,QString major, QString minor);
     Ui::Configurator *ui;
-    logic* logic_instance;
+    generator_logic* logic_instance;
 };
 
 #endif // CONFIGURATOR_H
