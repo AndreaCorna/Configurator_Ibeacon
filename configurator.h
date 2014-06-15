@@ -25,6 +25,7 @@ public slots:
 
 private:
     bool correct_data(QString UUID,QString major, QString minor);
+    void enable_sliders(bool enable);
     Ui::Configurator *ui;
     generator_logic* logic_instance;
     int mls;

@@ -17,9 +17,31 @@ Configurator::Configurator(QWidget *parent) :
     connect(this->ui->ten_slider,SIGNAL(valueChanged(int)),this,SLOT(set_number(int)));
     connect(this->ui->hundred_slider,SIGNAL(valueChanged(int)),this,SLOT(set_number(int)));
 
+    ui->unit_slider->setMaximum(10);
+    ui->unit_slider->setSingleStep(1);
+    ui->unit_slider->setTickInterval(1);
+    ui->ten_slider->setMaximum(10);
+    ui->ten_slider->setSingleStep(1);
+    ui->ten_slider->setTickInterval(1);
+    ui->hundred_slider->setMaximum(10);
+    ui->hundred_slider->setSingleStep(1);
+    ui->hundred_slider->setTickInterval(1);
+    ui->thousand_slider->setMaximum(10);
+    ui->thousand_slider->setSingleStep(1);
+    ui->thousand_slider->setTickInterval(1);
+    ui->ten_thousand_slider->setMaximum(10);
+    ui->ten_thousand_slider->setSingleStep(1);
+    ui->ten_thousand_slider->setTickInterval(1);
+    ui->hunder_thousand_slider->setMaximum(1);
+    ui->hunder_thousand_slider->setSingleStep(1);
+    ui->hunder_thousand_slider->setTickInterval(1);
     ui->unit_slider->setEnabled(false);
     ui->ten_slider->setEnabled(false);
     ui->hundred_slider->setEnabled(false);
+    ui->thousand_slider->setEnabled(false);
+    ui->ten_thousand_slider->setEnabled(false);
+    ui->hunder_thousand_slider->setEnabled(false);
+
 
 
 }
@@ -41,10 +63,19 @@ void Configurator::set_slider(){
         ui->unit_slider->setEnabled(true);
         ui->ten_slider->setEnabled(true);
         ui->hundred_slider->setEnabled(true);
-        if(first_check && second_check)
+        ui->thousand_slider->setEnabled(true);
+        ui->ten_thousand_slider->setEnabled(true);
+        ui->hunder_thousand_slider->setEnabled(true);
+        if(first_check && second_check){
             mls=2;
-        else
+            ui->ten_thousand_slider->setMaximum(10);
+            ui->hunder_thousand_slider->setEnabled(true);
+        }else{
             mls=1;
+            ui->ten_thousand_slider->setMaximum(6);
+            ui->hunder_thousand_slider->setEnabled(false);
+
+        }
     }else{
         ui->unit_slider->setEnabled(false);
         ui->ten_slider->setEnabled(false);
@@ -53,6 +84,7 @@ void Configurator::set_slider(){
 }
 
 void Configurator::set_number(int num){
+
     number =(num*65536*mls)/100;
     ui->number_label->setNum(number);
 }
@@ -85,9 +117,10 @@ void Configurator::reset(){
     ui->unit_slider->setValue(0);
     ui->ten_slider->setValue(0);
     ui->hundred_slider->setValue(0);
-    ui->unit_slider->setEnabled(false);
-    ui->ten_slider->setEnabled(false);
-    ui->hundred_slider->setEnabled(false);
+    ui->thousand_slider->setValue(0);
+    ui->ten_thousand_slider->setValue(0);
+    ui->hunder_thousand_slider->setValue(0);
+    enable_sliders(false);
 
 }
 
@@ -107,4 +140,13 @@ void Configurator::loadBoxMessage(){
     reset();
 
     QMessageBox::information(NULL,"Creation Complete","The script was successfully created");
+}
+
+void Configurator::enable_sliders(bool enable){
+    ui->unit_slider->setEnabled(enable);
+    ui->ten_slider->setEnabled(enable);
+    ui->hundred_slider->setEnabled(enable);
+    ui->thousand_slider->setEnabled(enable);
+    ui->ten_thousand_slider->setEnabled(enable);
+    ui->hunder_thousand_slider->setEnabled(enable);
 }
