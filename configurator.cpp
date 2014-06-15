@@ -29,7 +29,7 @@ void Configurator::generate(){
     QString minor = ui->lineMinor->text();
     if(minor.compare("")!=0 && major.compare("")!=0 && uuid.compare("")!=0){
         if(correct_data(uuid,major,minor)){
-            logic_instance->generate(uuid,major,minor);
+            logic_instance->generate(uuid,major,minor,ui->horizontalSlider->value());
         }else{
             QMessageBox::warning(NULL,"Wrong Parameters","You have to insert correct parameters in order to generate the script");
         }
@@ -49,8 +49,8 @@ bool Configurator::correct_data(QString UUID,QString major, QString minor){
     int major_number = major.toInt();
     int minor_number = minor.toInt();
     int uuid_size = UUID.size();
-    if( (major_number <0 || major_number > 65536) ||
-          (minor_number <0 || minor_number > 65536)  ||
+    if( (major_number <0 || major_number >= 65536) ||
+          (minor_number <0 || minor_number >= 65536)  ||
             uuid_size != 32)
         return false;
     return true;
@@ -59,5 +59,6 @@ bool Configurator::correct_data(QString UUID,QString major, QString minor){
 
 void Configurator::loadBoxMessage(){
     reset();
+
     QMessageBox::information(NULL,"Creation Complete","The script was successfully created");
 }
