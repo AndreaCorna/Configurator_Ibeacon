@@ -100,6 +100,7 @@ void Configurator::reset(){
     ui->ten_thousand_slider->setValue(0);
     ui->hunder_thousand_slider->setValue(0);
     enable_sliders(false);
+    enable_editor_numbers(true);
     number = 1;
 
 }

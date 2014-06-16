@@ -46,7 +46,13 @@ void generator_logic::generate_list(QString uuid, int strength, int number, bool
             else
                 create_script(uuid,other,zero,strength);
         }
+    }else{
+        int major_cycles = ((number -1)/65536) + 1;
+        for(int i = 0; i < major_cycles; i++){
+
+        }
     }
+    emit call_gui();
 
 }
 
