@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>521</width>
+    <width>528</width>
     <height>434</height>
    </rect>
   </property>
@@ -155,7 +155,7 @@
       <item>
        <widget class="QLabel" name="label_6">
         <property name="text">
-         <string>Number</string>
+         <string>Number of Scripts:</string>
         </property>
        </widget>
       </item>
@@ -383,7 +383,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>521</width>
+     <width>528</width>
      <height>20</height>
     </rect>
    </property>
@@ -408,8 +408,8 @@
    <slot>generate()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>189</x>
-     <y>337</y>
+     <x>203</x>
+     <y>390</y>
     </hint>
     <hint type="destinationlabel">
      <x>151</x>
@@ -424,8 +424,8 @@
    <slot>reset()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>374</x>
-     <y>337</y>
+     <x>403</x>
+     <y>390</y>
     </hint>
     <hint type="destinationlabel">
      <x>282</x>
@@ -433,9 +433,42 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>major_check</sender>
+   <signal>clicked()</signal>
+   <receiver>Configurator</receiver>
+   <slot>set_sliders()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>89</x>
+     <y>248</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-7</x>
+     <y>418</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>minor_check</sender>
+   <signal>clicked()</signal>
+   <receiver>Configurator</receiver>
+   <slot>set_sliders()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>359</x>
+     <y>253</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>660</x>
+     <y>452</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>generate()</slot>
   <slot>reset()</slot>
+  <slot>set_sliders()</slot>
  </slots>
 </ui>
