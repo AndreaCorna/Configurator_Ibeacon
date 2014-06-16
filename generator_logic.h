@@ -1,6 +1,6 @@
 #ifndef GENERATOR_LOGIC_H
 #define GENERATOR_LOGIC_H
-
+#include "generator_thread.h"
 #include <QObject>
 
 class generator_logic : public QObject
@@ -16,12 +16,13 @@ signals:
 
 
 public slots:
+    void notify_finish_thread();
 
 private:
     QString create_command_string(QString uuid);
     QString parse_int(int number);
     void create_script(QString uuid,QString major, QString minor, int strength);
-
+    generator_thread* single_thread;
 
 
 };

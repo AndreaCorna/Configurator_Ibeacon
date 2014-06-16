@@ -14,9 +14,11 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         configurator.cpp \
-    generator_logic.cpp
+    generator_logic.cpp \
+    generator_thread.cpp
 
 HEADERS  += configurator.h \
-    generator_logic.h
+    generator_logic.h \
+    generator_thread.h
 
 FORMS    += configurator.ui

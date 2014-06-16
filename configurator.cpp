@@ -135,8 +135,6 @@ void Configurator::enable_sliders(bool enable){
 
 void Configurator::create_connect(){
     connect(logic_instance,SIGNAL(call_gui()),this,SLOT(loadBoxMessage()));
-    connect(this->ui->major_check,SIGNAL(clicked()),this,SLOT(set_slider()));
-    connect(this->ui->minor_check,SIGNAL(clicked()),this,SLOT(set_slider()));
     connect(this->ui->unit_slider,SIGNAL(valueChanged(int)),this,SLOT(set_number(int)));
     connect(this->ui->unit_slider,SIGNAL(valueChanged(int)),this,SLOT(set_number(int)));
     connect(this->ui->ten_slider,SIGNAL(valueChanged(int)),this,SLOT(set_number(int)));
