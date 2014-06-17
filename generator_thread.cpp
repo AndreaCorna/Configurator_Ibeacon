@@ -77,10 +77,17 @@ void generator_thread::create_script(QString uuid,QString major, QString minor, 
 QString generator_thread::create_command_string(QString uuid){
     QString command = "hcitool -i hci0 cmd 0x08 0x0008 1e 02 01 1a 1a ff 4c 00 02 15 ";
     //qDebug()<<command;
-    for(int i=2;i<50;i = i+3){
-        uuid.insert(i," ");
+    QByteArray array = uuid.toAscii();
+    for(int i=0;i<32;i = i+2){
+       char first = array[i];
+       char second = array[i+1];
+       QString section = ""+first;
+       section.append(second);
+       command.append(section.toAscii().toHex());
+       command.append(" ");
     }
-    command.append(uuid);
+
+    //command.append(uuid);
     //qDebug()<<command;
 
     return command;

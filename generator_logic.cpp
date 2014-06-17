@@ -47,7 +47,7 @@ void generator_logic::generate_list(QString uuid, int strength, int number, bool
 
     }else{
         int major_cycles = ((number -1)/65536)+1;
-        int last_cycle = number - (number/65536);
+        int last_cycle = number - (number/65536)*65536;
         QString zero = QString::number(0);
         qDebug()<<"major cycle"+QString::number(major_cycles);
         for(int i = 0;i < major_cycles;i++){
@@ -55,9 +55,11 @@ void generator_logic::generate_list(QString uuid, int strength, int number, bool
             QDir().mkdir(uuid+"/"+QString::number(i));
 
             qDebug()<<"in loop";
-            if(i == major_cycles -1)
+            if(i == major_cycles -1){
                 to_create = last_cycle;
-            else
+                qDebug()<<"last";
+
+            }else
                 to_create = 65536;
             qDebug()<<"in loop 2";
 
