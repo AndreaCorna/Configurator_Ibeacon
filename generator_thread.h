@@ -11,6 +11,7 @@ public:
     void run();
     void set_update_minor(bool update);
     void set_last(bool is_last);
+    static const int NUMBER_LIMIT = 65536;
 
 signals:
     void call_gui();

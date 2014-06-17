@@ -76,7 +76,11 @@ void Configurator::generate(){
             if(correct_data(uuid,major,minor)){
                 logic_instance->generate(uuid,major,minor,ui->horizontalSlider->value());
             }else{
-                QMessageBox::warning(NULL,"Wrong Parameters","You have to insert correct parameters in order to generate the script");
+                QString message = "You have to insert correct parameters in order to generate the script";
+                message.append("\n\n");
+                message.append("UUID of 32 characters\n");
+                message.append("\nMajor and Minor between 0 and 65536");
+                QMessageBox::warning(NULL,"Wrong Parameters",message);
             }
         }else{
                  QMessageBox::warning(NULL,"Please Insert all parameters","You cannot create an iBeacon without specifing all parameters");

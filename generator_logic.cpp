@@ -27,7 +27,7 @@ void generator_logic::notify_finish_thread(){
 
 void generator_logic::generate_list(QString uuid, int strength, int number, bool update_minor){
     QDir().mkdir(uuid);
-    if(number <= 65536){
+    if(number <= generator_thread::NUMBER_LIMIT){
         QString zero = QString::number(0);
         QString other = QString::number(1);
            if(update_minor){
@@ -46,8 +46,8 @@ void generator_logic::generate_list(QString uuid, int strength, int number, bool
     }
 
     }else{
-        int major_cycles = ((number -1)/65536)+1;
-        int last_cycle = number - (number/65536)*65536;
+        int major_cycles = ((number -1)/generator_thread::NUMBER_LIMIT)+1;
+        int last_cycle = number - (number/generator_thread::NUMBER_LIMIT)*generator_thread::NUMBER_LIMIT;
         QString zero = QString::number(0);
         qDebug()<<"major cycle"+QString::number(major_cycles);
         for(int i = 0;i < major_cycles;i++){
@@ -60,7 +60,7 @@ void generator_logic::generate_list(QString uuid, int strength, int number, bool
                 qDebug()<<"last";
 
             }else
-                to_create = 65536;
+                to_create = generator_thread::NUMBER_LIMIT;
             qDebug()<<"in loop 2";
 
             QString major_number = QString::number(i);

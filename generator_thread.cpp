@@ -20,7 +20,7 @@ void generator_thread::run(){
         create_script(uuid,major,minor,strength_level);
         emit finished();
 
-    }else if(number_to_generate <= 65536){
+    }else if(number_to_generate <= NUMBER_LIMIT){
         qDebug()<<"più iteer";
         if(update_minor){
             qDebug()<<"in loop per piu";
